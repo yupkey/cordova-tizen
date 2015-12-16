@@ -25,15 +25,15 @@ all :: js copy_js
 clean :: clean_libs
 
 clean_libs:
-	$(RM_RF) lib
+	$(RM_RF) cordova-lib
 
 copy_js: js
-	$(CP) lib/cordova.js framework/cordova-$(PGVERSION).js
+	$(CP) cordova-lib/cordova.js framework/cordova-$(PGVERSION).js
 
-js: lib/cordova.js
+js: cordova-lib/cordova.js
 
-lib/cordova.js: js/cordova.tizen.js js/native.js
-	$(MKPATH) lib
+cordova-lib/cordova.js: js/cordova.tizen.js js/native.js
+	$(MKPATH) cordova-lib
 	$(RM_F) $@
 	$(CAT) js/native.js >> $@
 	$(CAT) js/cordova.tizen.js >> $@
